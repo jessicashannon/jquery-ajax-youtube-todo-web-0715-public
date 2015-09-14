@@ -1,4 +1,4 @@
-// document ready means that this script will wait 
+// document ready means that this script will wait
 // for the page to get loaded before running
 $(document).ready(function() {
 
@@ -16,10 +16,24 @@ $(document).ready(function() {
     }
   });
 
-  function ajaxCall() {
-    
-    // your code will go here
+  });
 
-  }
+  function ajaxCall(){
+  //   var input = $('#text-field').val();
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/widget',
+  //     data: {search_keyword: input}
+  //   })
+  //   .done(function(responseMessage){
+  //     $('#search-results').html(responseMessage);
+  //     });
+  // };
 
-});
+ var searchTerm = $('#text-field').val();
+
+  $.get('/widget', { search_keyword: searchTerm }, function (data) {
+    $('#ytplayer').remove();
+    $('#search-results').append(data);
+  })
+}
